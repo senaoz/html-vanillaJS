@@ -6,7 +6,10 @@
 </head>
 <body style="display: flex; flex-direction: column; align-items: center;">
 
-<h1 id="timer">0</h1>
+<div id="timer" style="
+    display: inline-flex;
+    align-items: center;
+"><h1 id="minutes">0</h1> min <h1 id="seconds">0</h1> secs</div>
 
 <div>
     <button id="startButton" onclick="startTimer()">Start</button>
@@ -37,7 +40,9 @@
         } else if (status === null){
             seconds = 0
         }
-        document.getElementById("timer").innerText = seconds
+        document.getElementById("seconds").innerHTML = (seconds%60)
+        document.getElementById("minutes").innerText = Math.floor(seconds/60)
+
     }
 
     setInterval(updateTimer, 1000);
